@@ -21,15 +21,15 @@ public class lexicon {
         }
     }
 
-    void HashCreate(lexicon L, int m) {
+   public static void HashCreate(lexicon L, int m) {
         L.A = new int[15 * m];
         L.hashTable = new hashT[m];
     }
 
-    void HashEmpty(lexicon L) {
+   public static void HashEmpty(lexicon L) {
         boolean empty = true;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != null) {
+        for (int i = 0; i < L.hashTable.length; i++) {
+            if (L.hashTable[i] != null) {
                 empty = false;
                 break;
             }
