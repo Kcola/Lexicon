@@ -6,7 +6,7 @@ public class lexicon {
         private int key;
         private int value;
 
-        HashEntry(int key, int value){
+        void HashEntry(int key, int value){
                 this.key = key;
                 this.value = value;
             }
