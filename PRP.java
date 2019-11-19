@@ -4,6 +4,9 @@ public class PRP{
         lexicon L = new lexicon();
         lexicon.HashCreate(L,15);
         lexicon.HashEmpty(L);
+        lexicon.HashInsert(L, "yer");
+        lexicon.HashInsert(L, "wow");
+        return;
     }
     
 }
