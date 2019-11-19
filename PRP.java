@@ -6,6 +6,7 @@ public class PRP{
         lexicon.HashEmpty(L);
         lexicon.HashInsert(L, "yer");
         lexicon.HashInsert(L, "wow");
+        lexicon.HashDelete(L, "yer");
         return;
     }
     

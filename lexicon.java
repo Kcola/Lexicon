@@ -66,5 +66,16 @@ public class lexicon {
         int key = HashedIndex(asciiW, L.hashTable.length);
         L.hashTable[key] = new hashT(key, start);
     }
+    public static void HashDelete(lexicon L, String wordS) {
+        char[] word = wordS.toCharArray();
+        int asciiW = 0;
+
+        for (int i = 0; i < word.length; i++) {
+            asciiW = asciiW + (int) word[i];
+        }
+        int key = HashedIndex(asciiW, L.hashTable.length);
+        L.hashTable[key] = null;
+    }
+
 
 }
