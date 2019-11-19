@@ -20,7 +20,7 @@ public class lexicon {
 
         }
     }
-
+//done
     private static int HashedIndex(int asciiW, int m) {
         int position = asciiW % m;
         return position;
