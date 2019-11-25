@@ -3,13 +3,13 @@ public class lexicon {
     hashT[] hashTable;
 
     public static class hashT {
-        private int key;
-        private int value;
+        private Integer key;
+        private Integer value;
 
-       public hashT(int key, int value){
-                this.key = key;
-                this.value = value;
-            }
+        public hashT(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
 
         public int getKey() {
             return key;
@@ -20,6 +20,7 @@ public class lexicon {
 
         }
     }
+
     private static int HashedIndex(int asciiW, int m) {
         int position = asciiW % m;
         return position;
@@ -52,20 +53,39 @@ public class lexicon {
         char[] word = wordS.toCharArray();
         int asciiW = 0;
         int start = 0;
-        while(L.A[start]!=0){
+        while (L.A[start] != 0) {
             start++;
         }
-        if(start!=0)
-        start = start+1;
+        if (start != 0)
+            start = start + 1;
 
         for (int i = 0; i < word.length; i++) {
             asciiW = asciiW + (int) word[i];
         }
-        for(int i = start; i < word.length + start; i++)
-            L.A[i] = word[i-start];
+        for (int i = start; i < word.length + start; i++)
+            L.A[i] = word[i - start];
         int key = HashedIndex(asciiW, L.hashTable.length);
         L.hashTable[key] = new hashT(key, start);
     }
+
+    public static void HashSearch(lexicon L, String wordS) {
+        char[] word = wordS.toCharArray();
+        int asciiW = 0;
+
+        for (int i = 0; i < word.length; i++) {
+            asciiW = asciiW + (int) word[i];
+        }
+        int key = HashedIndex(asciiW, L.hashTable.length);
+        try {
+            if (L.hashTable[key].value != null)
+
+                System.out.println(wordS + " was found in slot " + key);
+        } catch (NullPointerException e) {
+            System.out.println(wordS + " was not found");
+        }
+
+    }
+
     public static void HashDelete(lexicon L, String wordS) {
         char[] word = wordS.toCharArray();
         int asciiW = 0;
@@ -76,6 +96,5 @@ public class lexicon {
         int key = HashedIndex(asciiW, L.hashTable.length);
         L.hashTable[key] = null;
     }
-
 
 }
