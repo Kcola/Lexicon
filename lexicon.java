@@ -2,7 +2,7 @@
 public class lexicon {
     char[] A = null;
     hashT[] hashTable;
-
+    
     public static class hashT {
         private Integer key;
         private Integer value;
@@ -32,14 +32,14 @@ public class lexicon {
 
     }
     private static int hashIndex(int asciiW, int iteration, int length){
-        int index = (asciiW+(iteration^2))%length;
+        int index = (asciiW+(iteration*iteration))%length;
         return index;
     }
     private static int hashProb(lexicon L, int hash, int size) {
         int index=hash% size;
         int i = 0;
         while(L.hashTable[index]!=null){
-            index = (hash + (i ^ 2)) % size;
+            index = (hash + (i*i)) % size;
             i++;
         }
         return index;
@@ -73,7 +73,7 @@ public class lexicon {
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
         int start = 0;
-        while (L.A[start] != 0) {
+        while (L.A[start] != 0 && L.A[start+1] != 0) {
             start++;
         }
         if (start != 0)
