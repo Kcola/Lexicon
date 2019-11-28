@@ -73,11 +73,11 @@ public class lexicon {
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
         int start = 0;
-        while (L.A[start] != 0 && L.A[start+1] != 0) {
+        while (L.A[start] + L.A[start+1] != 0) {
             start++;
         }
         if (start != 0)
-            start = start + 1;
+            start = start +1;
 
         for (int i = start; i < word.length + start; i++)
             L.A[i] = word[i - start];
@@ -85,7 +85,7 @@ public class lexicon {
         L.hashTable[key] = new hashT(key, start);
     }
 
-    public static void HashSearch(lexicon L, String wordS) {
+    public static int HashSearch(lexicon L, String wordS) {
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
 
@@ -101,7 +101,7 @@ public class lexicon {
                 }
                 if (found) {
                     System.out.println(wordS + " was found in slot " + key);
-                    return;
+                    return key;
                 }
 
                 else {
@@ -115,14 +115,18 @@ public class lexicon {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return -1;
 
     }
 
     public static void HashDelete(lexicon L, String wordS) {
-        char[] word = wordS.toCharArray();
-        int asciiW = hash(word);
-        int key = hashIndex(asciiW,0, L.hashTable.length);
+        int key = HashSearch(L, wordS);
+        if(key != -1){
         L.hashTable[key] = null;
+        System.out.println(wordS + " deleted.");
+    }
+        else
+        System.out.println(wordS + " not found.");
     }
 
 }
