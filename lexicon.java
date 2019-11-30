@@ -32,12 +32,13 @@ public class lexicon {
 
     }
 
-    private static int hashIndex(int asciiW, int iteration, int length) {//single step of hash function with an iteration parameter for search operation
+    private static int hashIndex(int asciiW, int iteration, int length) {// single step of hash function with an
+                                                                         // iteration parameter for search operation
         int index = (asciiW + (iteration * iteration)) % length;
         return index;
     }
 
-    private static int hashProb(lexicon L, int hash, int size) {//quadratic probing for insert operation
+    private static int hashProb(lexicon L, int hash, int size) {// quadratic probing for insert operation
         int index = hash % size;
         int i = 0;
         while (L.hashTable[index] != null) {
@@ -96,7 +97,8 @@ public class lexicon {
             while (key < L.hashTable.length) {// iterate through hashtable using HashIndex
                 boolean found = true;
                 int i = 0;
-                if (L.hashTable[key] != null) {// if computed hashtable index is not null check if word in that slot is the key we need
+                if (L.hashTable[key] != null) {// if computed hashtable index is not null check if word in that slot is
+                                               // the key we need
                     while (L.A[L.hashTable[key].value + i] != 0) {
                         found = found && (word[i] == L.A[L.hashTable[key].value + i]);
                         i++;
@@ -111,10 +113,11 @@ public class lexicon {
                         key = hashIndex(asciiW, j, L.hashTable.length);
 
                     }
-                } else {//this if-else allows iteration to continue even if a previous hash index is null in case of deletion
+                } else {// this if-else allows iteration to continue even if a previous hash index is
+                        // null in case of deletion
                     j++;
-                    if(j*j > L.hashTable.length)//prevent from restarting probings
-                    break;
+                    if (j * j > L.hashTable.length)// prevent from restarting probings
+                        break;
                     key = hashIndex(asciiW, j, L.hashTable.length);
                 }
 
@@ -137,4 +140,29 @@ public class lexicon {
             System.out.println(wordS + " not found.");
     }
 
+    public static void HashPrint(lexicon L) {
+        if (L.hashTable[0] != null)
+            System.out.print(0 + ": " + L.hashTable[0].value);
+        else
+            System.out.print(0 + ": ");
+            System.out.print("               A: ");
+        for (int j = 0; j < L.A.length-1; j++) {
+            if (L.A[j] == 0){
+                if(L.A[j+1] != 0)
+                System.out.print("/");
+                System.out.print("");
+            }
+             else
+            System.out.print(L.A[j]);
+        }
+        System.out.println();
+        for (int i = 1; i < L.hashTable.length; i++) {
+            if (L.hashTable[i] != null)
+                System.out.println(i + ": " + L.hashTable[i].value);
+            else
+                System.out.println(i + ": ");
+
+        }
+
+    }
 }

@@ -7,10 +7,8 @@ public class PRP{
         lexicon.HashInsert(L, "yer");
         lexicon.HashInsert(L, "eyr");
         lexicon.HashInsert(L, "yer");
-        lexicon.HashDelete(L, "yer");
-        lexicon.HashDelete(L, "yer");
-        lexicon.HashDelete(L, "y");
-        lexicon.HashEmpty(L);
+        lexicon.HashPrint(L);
+        //lexicon.HashEmpty(L);
         return;
     }
     
