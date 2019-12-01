@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 public class lexicon {
     char[] A = null;
     hashT[] hashTable;
@@ -147,15 +148,14 @@ public class lexicon {
             System.out.print(0 + ": " + L.hashTable[0].value);
         else
             System.out.print(0 + ": ");
-            System.out.print("               A: ");
-        for (int j = 0; j < L.A.length-1; j++) {
-            if (L.A[j] == 0){
-                if(L.A[j+1] != 0)
-                System.out.print("/");
+        System.out.print("               A: ");
+        for (int j = 0; j < L.A.length - 1; j++) {
+            if (L.A[j] == 0) {
+                if (L.A[j + 1] != 0)
+                    System.out.print("/");
                 System.out.print("");
-            }
-             else
-            System.out.print(L.A[j]);
+            } else
+                System.out.print(L.A[j]);
         }
         System.out.println();
         for (int i = 1; i < L.hashTable.length; i++) {
@@ -167,20 +167,44 @@ public class lexicon {
         }
 
     }
-    public static void HashBatch(String FileName){
+
+    public static void HashBatch(lexicon L, String FileName) {
+        String[] lineArray = new String[2];
         BufferedReader reader;
-		try {
-			reader = new BufferedReader(new FileReader(
-                FileName));
-			String line = reader.readLine();
-			while (line != null) {
-				System.out.println(line);
-				// read next line
-				line = reader.readLine();
-			}
-			reader.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            reader = new BufferedReader(new FileReader(FileName));
+            String line = reader.readLine();
+            while (line != null) {
+                lineArray = line.split(" ");
+                switch (Integer.parseInt(lineArray[0])) {
+                case 10:
+                    HashInsert(L, lineArray[1]);
+                    break;
+                case 11:
+                    HashDelete(L, lineArray[1]);
+                    break;
+                case 12:
+                    HashSearch(L, lineArray[1]);
+                    break;
+                case 13:
+                    HashPrint(L);
+                    break;
+                case 14:
+                    HashCreate(L, Integer.parseInt(lineArray[1]));
+                    break;
+                case 15:
+                    
+                    break;
+
+                default:
+                    break;
+                }
+                // read next line
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
