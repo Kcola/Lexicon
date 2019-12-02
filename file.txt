@@ -1,14 +1,16 @@
 14 3
-10 alex
+10 yer
 10 njxiwncxqbcdqbewcdibquewbcqwjknjcneiwqnciewcuewiiwucdkncjkdrccjnrjdmsscdcsdsckjjkwc
-10 jerry
-10 tom
+10 rey
+10 eyr
 15 ready-to-print 13
 13
 12 alex
 12 tom
 12 jerry
 12 mary
-11 tom
+11 yer
 11 njxiwncxqbcdqbewcdibquewbcqwjknjcneiwqnciewcuewiiwucdkncjkdrccjnrjdmsscdcsdsckjjkwc
+12 rey
+10 yer
 13

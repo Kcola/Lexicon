@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class lexicon {
+public class lexicon_6959 {
     char[] A = null;
-    hashT[] hashTable;
+    hashT_6959[] hashTable;
 
-    public static class hashT {
+    public static class hashT_6959 {
         private Integer key;
         private Integer value;
 
-        public hashT(int key, int value) {
+        public hashT_6959(int key, int value) {
             this.key = key;
             this.value = value;
         }
@@ -43,7 +43,7 @@ public class lexicon {
         return index;
     }
 
-    private static int hashProb(lexicon L, int hash, int size) {// quadratic probing for insert operation
+    private static int hashProb(lexicon_6959 L, int hash, int size) {// quadratic probing for insert operation
         int index = hash % size;
         int i = 0;
         while (L.hashTable[index] != null && i <= L.hashTable.length - 1) {
@@ -60,12 +60,12 @@ public class lexicon {
         return index;
     }
 
-    public static void HashCreate(lexicon L, int m) {
+    public static void HashCreate(lexicon_6959 L, int m) {
         L.A = new char[15 * m];
-        L.hashTable = new hashT[m];
+        L.hashTable = new hashT_6959[m];
     }
 
-    public static void HashEmpty(lexicon L) {
+    public static void HashEmpty(lexicon_6959 L) {
         boolean empty = true;
         for (int i = 0; i < L.hashTable.length; i++) {
             if (L.hashTable[i] != null) {
@@ -74,29 +74,29 @@ public class lexicon {
             }
         }
         if (empty == true) {
-            System.out.println("Lexicon is empty");
+            System.out.println("lexicon_6959 is empty");
         } else
-            System.out.println("Lexicon is not empty");
+            System.out.println("lexicon_6959 is not empty");
     }
 
-    public static boolean HashFull(lexicon L) {
+    public static boolean HashFull(lexicon_6959 L) {
         for (int j = 0; j < L.hashTable.length; j++) {
             if (L.hashTable[j] == null)
                 return false;
         }
         return true;
     }
-    public static boolean CanWordFit(lexicon L, char[] word){
+    public static boolean CanWordFit(lexicon_6959 L, char[] word){
         int i=0;
         while(L.A[i]+L.A[i+1]!=0)
         i++;
 
-        if(word.length>L.A.length - i)
+        if(word.length+1>L.A.length - i)
         return false;
         else
         return true;
     }
-    public static void HashInsert(lexicon L, String wordS) {
+    public static void HashInsert(lexicon_6959 L, String wordS) {
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
         int start = 0;
@@ -116,10 +116,10 @@ public class lexicon {
         for (int i = start; i < word.length + start; i++)
                 L.A[i] = word[i - start];
         
-        L.hashTable[key] = new hashT(key, start);
+        L.hashTable[key] = new hashT_6959(key, start);
     }
 
-    public static int HashSearch(lexicon L, String wordS) {
+    public static int HashSearch(lexicon_6959 L, String wordS) {
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
 
@@ -161,7 +161,7 @@ public class lexicon {
 
     }
 
-    public static int HashSearchNoPrint(lexicon L, String wordS) {// A copy of the search operation for deletion.
+    public static int HashSearchNoPrint(lexicon_6959 L, String wordS) {// A copy of the search operation for deletion.
         char[] word = wordS.toCharArray();
         int asciiW = hash(word);
 
@@ -201,7 +201,7 @@ public class lexicon {
 
     }
 
-    public static void HashDelete(lexicon L, String wordS) {
+    public static void HashDelete(lexicon_6959 L, String wordS) {
         int key = HashSearchNoPrint(L, wordS);
         int i = 0;
         if (key != -1) {
@@ -215,7 +215,7 @@ public class lexicon {
             System.out.println(wordS + " was not found hence no deletion.");
     }
 
-    public static void HashPrint(lexicon L) {
+    public static void HashPrint(lexicon_6959 L) {
         if (L.hashTable[0] != null)
             System.out.print(0 + ": " + L.hashTable[0].value);
         else
@@ -240,7 +240,7 @@ public class lexicon {
 
     }
 
-    public static void HashBatch(lexicon L, String FileName) {
+    public static void HashBatch(lexicon_6959 L, String FileName) {
         String[] lineArray = new String[2];
         BufferedReader reader;
         try {
@@ -292,14 +292,14 @@ public class lexicon {
         return true;
     }
 
-    public static void HashIncreaseSize(lexicon L) {// set hashtable new size to nearest prime number after doubling
+    public static void HashIncreaseSize(lexicon_6959 L) {// set hashtable new size to nearest prime number after doubling
                                                     // initial size.
         int newSize = L.hashTable.length * 2;
         int i = 0;
         while (!prime(newSize + i))
             i++;
         newSize = newSize + i;
-        lexicon L2 = new lexicon();
+        lexicon_6959 L2 = new lexicon_6959();
         HashCreate(L2, newSize);
         List<String> strings = charArrayToStrings(L);
         for (String string : strings) {
@@ -309,7 +309,7 @@ public class lexicon {
         System.out.println("Hashtable size increased to " + newSize + " and contents rehashed");
     }
 
-    public static List<String> charArrayToStrings(lexicon L) {
+    public static List<String> charArrayToStrings(lexicon_6959 L) {
         int i = 0;
         List<String> strings = new ArrayList<String>();
         while (L.A[i] + L.A[i + 1] != 0) {

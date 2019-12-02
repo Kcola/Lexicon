@@ -2,9 +2,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - PRP",
+            "name": "CodeLens (Launch) - prp_6959",
             "request": "launch",
-            "mainClass": "PRP"
+            "mainClass": "prp_6959",
+            "args": "file.txt"
         }
     ]
 }
